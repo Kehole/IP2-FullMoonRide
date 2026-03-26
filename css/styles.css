@@ -1,0 +1,84 @@
+/* Full Moon Ride — scroll-zoom effect
+   All sizes target MacBook Pro 16″ (1728 × 1117 logical px) */
+
+/* Variation fonts for Phase 27 font-mutation effect */
+@font-face { font-family: 'VarB1'; src: url('../font/variationfont/b1.ttf'); }
+@font-face { font-family: 'VarB2'; src: url('../font/variationfont/b2.ttf'); }
+@font-face { font-family: 'VarB3'; src: url('../font/variationfont/b3.ttf'); }
+@font-face { font-family: 'VarB4'; src: url('../font/variationfont/b4.ttf'); }
+@font-face { font-family: 'VarB5'; src: url('../font/variationfont/b5.ttf'); }
+@font-face { font-family: 'VarV1'; src: url('../font/variationfont/v1.ttf'); }
+@font-face { font-family: 'VarV2'; src: url('../font/variationfont/v2.ttf'); }
+@font-face { font-family: 'VarV3'; src: url('../font/variationfont/v3.ttf'); }
+@font-face { font-family: 'VarV4'; src: url('../font/variationfont/v4.ttf'); }
+@font-face { font-family: 'VarV5'; src: url('../font/variationfont/v5.ttf'); }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 18662vh;
+  overflow-x: hidden;
+}
+
+body {
+  height: 18662vh;
+  margin: 0;
+  background: #D8CAB6;
+  overflow-x: hidden;
+}
+
+/* The fixed frame that never moves */
+.fixed-viewport {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #D8CAB6;
+}
+
+/* The SVG scene fills the viewport exactly */
+.scene-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Scroll-down hint arrow */
+.scroll-indicator {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  border-right: 2px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  transform: rotate(45deg);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: rotate(45deg) translateY(6px);
+    opacity: 0.7;
+  }
+}
